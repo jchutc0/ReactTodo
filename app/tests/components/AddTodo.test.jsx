@@ -31,5 +31,5 @@ describe('AddTodo', () => {
     addTodo.refs.todoText.value = todoText;
     TestUtils.Simulate.submit($el.find('form')[0]);
     expect(spy).toNotHaveBeenCalled();
-  }); // Todo should call onAddTodo prop with valid data
+  }); // Todo should not call onAddTodo prop with invalid input
 });   // Todo describe
