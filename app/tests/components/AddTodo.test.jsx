@@ -9,7 +9,7 @@ var AddTodo = require('AddTodo');
 describe('AddTodo', () => {
   it('should exist', () => {
     expect(AddTodo).toExist();
-  }); // Todo should exist
+  }); // AddTodo should exist
 
   it('should call onAddTodo prop with valid data', () => {
     var todoText = 'Check mail';
@@ -20,7 +20,7 @@ describe('AddTodo', () => {
     addTodo.refs.todoText.value = todoText;
     TestUtils.Simulate.submit($el.find('form')[0]);
     expect(spy).toHaveBeenCalledWith(todoText);
-  }); // Todo should call onAddTodo prop with valid data
+  }); // AddTodo should call onAddTodo prop with valid data
 
   it('should not call onAddTodo prop with invalid input', () => {
     var todoText = '';
@@ -31,5 +31,5 @@ describe('AddTodo', () => {
     addTodo.refs.todoText.value = todoText;
     TestUtils.Simulate.submit($el.find('form')[0]);
     expect(spy).toNotHaveBeenCalled();
-  }); // Todo should not call onAddTodo prop with invalid input
-});   // Todo describe
+  }); // AddTodo should not call onAddTodo prop with invalid input
+});   // AddTodo describe
