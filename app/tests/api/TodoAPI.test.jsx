@@ -54,4 +54,51 @@ describe('TodoAPI', () => {
     });   // should return todos if valid array in localStorage
   });     // getTodos
 
+  describe('filterTodos', () => {
+    var todos = [
+      {
+        id: 1,
+        text: 'some text',
+        completed: true
+      },
+      {
+        id: 2,
+        text: 'other text',
+        completed: false
+      },
+      {
+        id: 3,
+        text: 'Some text 3',
+        completed: true
+      }
+    ];
+
+    it('should return all items if showCompleted is true', () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, true, '');
+      expect(filteredTodos.length).toBe(3);
+    });   // should return all items if showCompleted is true
+
+    it('should return subset of items if showCompleted is false', () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, false, '');
+      expect(filteredTodos.length).toBe(1);
+    });   // should return subset of items if showCompleted is false
+
+    it('should sort by completed status', () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, true, '');
+      expect(filteredTodos[0].completed).toBe(false);
+    });   // should sort by completed status
+
+    it('should filter todos by search text', () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, true, 'some');
+      expect(filteredTodos.length).toBe(2);
+    });   // should filter todos by search text
+
+    it('should return all items if searchText is empty', () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, true, '');
+      expect(filteredTodos.length).toBe(3);
+    });   // should return all items if searchText is empty
+
+
+  });     // filterTodos
+
 });       // TodoAPI

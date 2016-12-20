@@ -19,5 +19,47 @@ module.exports = {
     } // try...catch
 
     return $.isArray(todos) ? todos : [];
-  }   // getTodos
-};
+  },  // getTodos
+
+  filterTodos: function(todos, showCompleted, searchText) {
+    var filteredTodos = todos;
+
+    // filter by showCompleted
+    filteredTodos = filteredTodos.filter((todo) => {
+      return !todo.completed || showCompleted;
+    });
+
+    // filter by searchText
+    filteredTodos = filteredTodos.filter((todo) => {
+      // if(
+      //   (searchText === '') ||
+      //   (todo.text.toLowerCase().indexOf(searchText) !== -1)
+      // ) {
+      //   return true;
+      // } else {
+      //   return false;
+      // }
+      var text = todo.text.toLowerCase();
+      return (
+        searchText.length === 0 ||
+        text.indexOf(searchText) > -1
+      );
+    });
+
+
+    // sort todos with non-completed first
+    filteredTodos.sort((a, b) => {
+      if(!a.completed && b.completed) {
+        return -1;
+      } else if (a.completed && !b.completed) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+
+    return filteredTodos;
+  }   // filterTodos
+
+
+};    // module.exports
