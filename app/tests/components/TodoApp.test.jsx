@@ -18,13 +18,16 @@ describe('TodoApp', () => {
     todoApp.setState({todos: []});
     todoApp.handleAddTodo(todoText);
     expect(todoApp.state.todos[0].text).toBe(todoText);
+    expect(todoApp.state.todos[0].createdAt).toBeA('number');
   }); // TodoApp should add todo to the todos state on handleAddTodo
 
   it('should toggle completed value when handleToggle called', () => {
     var todoData = {
       id: 11,
       text: 'Test features',
-      completed: false
+      completed: false,
+      createdAt: 0,
+      completedAt: undefined
     };
     var todoApp = TestUtils.renderIntoDocument(<TodoApp/>);
 
@@ -32,5 +35,23 @@ describe('TodoApp', () => {
     expect(todoApp.state.todos[0].completed).toBe(false);
     todoApp.handleToggle(todoData.id);
     expect(todoApp.state.todos[0].completed).toBe(true);
+    expect(todoApp.state.todos[0].completedAt).toBeA('number');
   }); // TodoApp should toggle completed value when handleToggle called
+
+  it('should change completedAt to undefined marking incomplete', () => {
+    var todoData = {
+      id: 11,
+      text: 'Test features',
+      completed: true,
+      createdAt: 0,
+      completedAt: 7
+    };
+    var todoApp = TestUtils.renderIntoDocument(<TodoApp/>);
+
+    todoApp.setState({todos: [todoData]});
+    expect(todoApp.state.todos[0].completed).toBe(true);
+    todoApp.handleToggle(todoData.id);
+    expect(todoApp.state.todos[0].completed).toBe(false);
+    expect(todoApp.state.todos[0].completedAt).toNotExist();
+  }); // TodoApp should change completedAt to undefined marking incomplete
 });   // TodoApp describe
