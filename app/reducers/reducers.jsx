@@ -43,12 +43,15 @@ export var todosReducer = (state = [], action) => {
       if(todo.id === action.id) {
         var completed = !todo.completed;
         var completedAt = completed ? moment().unix() : undefined;
+
+        return {
+          ...todo,
+          completed,
+          completedAt
+        };
+      } else {
+        return todo;
       }
-      return {
-        ...todo,
-        completed,
-        completedAt
-      };
     });
 
     default:
