@@ -56,7 +56,5 @@ describe('Reducers', () => {
       expect(res[0].completed).toBe(false);
       expect(res[0].completedAt).toNotExist();
     });     // should toggle todo
-
   });       // describe todosReducer
-
 });         // describe Reducers
