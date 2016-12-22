@@ -35,6 +35,12 @@ export var todosReducer = (state = [], action) => {
       }
     ];      // return array
 
+    case 'ADD_TODOS':
+    return [
+      ...state,
+      ...action.todos
+    ];
+
     case 'TOGGLE_TODO':
     // match item of action.id in todos
     // modify it, set completed = !completed
