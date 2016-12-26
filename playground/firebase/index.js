@@ -10,7 +10,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var firebaseRef = firebase.database().ref()
+var firebaseRef = firebase.database().ref();
 
 firebaseRef.set({
   app: {
