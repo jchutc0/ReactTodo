@@ -3,11 +3,10 @@ import firebase from 'firebase';
 try {
   // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyBWG5SaHBxbm636-GWpTQjDyFdeo4o0eIc",
-    authDomain: "hutch-todo-app.firebaseapp.com",
-    databaseURL: "https://hutch-todo-app.firebaseio.com",
-    storageBucket: "hutch-todo-app.appspot.com",
-    messagingSenderId: "511664054511"
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    databaseURL: process.env.DATABASE_URL,
+    storageBucket: process.env.STORAGE_BUCKET
   };
   firebase.initializeApp(config);
 } catch(e) {
