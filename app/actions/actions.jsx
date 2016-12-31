@@ -100,7 +100,7 @@ export var startLogin = () => {
       console.log('Unable to auth', e);
     });
   };
-};
+};          // startLogin
 
 export var startLogout = () => {
   return (dispatch, getState) => {
@@ -108,4 +108,17 @@ export var startLogout = () => {
       console.log('Logged out');
     });
   };
-};
+};          // startLogout
+
+export var login = (uid) => {
+  return {
+    type: 'LOGIN',
+    uid
+  };
+};          // login
+
+export var logout = () => {
+  return {
+    type: 'LOGOUT'
+  };
+};          // logout

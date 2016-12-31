@@ -86,4 +86,32 @@ describe('Reducers', () => {
       expect(res[0]).toEqual(todos[0]);
     });     // should toggle todo
   });       // describe todosReducer
+  describe('authReducer', () => {
+    it('should update auth on login', () => {
+      var auth = {
+        uid: 'SomeUID'
+      };
+      var action = {
+        type: 'LOGIN',
+        uid: auth.uid
+      };
+      const res = reducers.authReducer(df({}), df(action));
+
+      expect(res).toEqual(auth);
+    });     // should update auth on login
+
+    it('should update auth on logout', () => {
+      const authData = {
+        uid: 'abc123'
+      };
+      var auth = {};
+      var action = {
+        type: 'LOGOUT'
+      };
+      const res = reducers.authReducer(df(authData), df(action));
+
+      expect(res).toEqual(auth);
+    });     // should update auth on logout
+
+  });       // describe authReducer
 });         // describe Reducers
