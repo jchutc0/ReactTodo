@@ -3,12 +3,16 @@ import * as Redux from 'react-redux';
 
 import * as actions from 'actions';
 
+export class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onLogin = this.onLogin.bind(this);
+  }         // constructor
 
-export var Login = React.createClass({
   onLogin() {
     var {dispatch} = this.props;
     dispatch(actions.startLogin());
-  },
+  }         // onLogin
 
   render() {
     return (
@@ -20,13 +24,15 @@ export var Login = React.createClass({
             <div className='callout callout-auth'>
               <h3>Login</h3>
               <p>Login with GitHub account below.</p>
-              <button className='button' onClick={this.onLogin}>Login with GitHub</button>
+              <button className='button' onClick={this.onLogin}>
+                Login with GitHub
+              </button>
             </div>
           </div>
         </div>
       </div>
     );
   }         // render
-});         // Login class
+};          // Login
 
 export default Redux.connect()(Login);

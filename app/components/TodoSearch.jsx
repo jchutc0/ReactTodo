@@ -1,10 +1,9 @@
-var React = require('react');
-var {connect} = require('react-redux');
-var actions = require('actions');
+import React from 'react';
+import {connect} from 'react-redux';
+import * as actions from 'actions';
 
-export var TodoSearch = React.createClass({
-
-  render: function() {
+export class TodoSearch extends React.Component {
+  render() {
     var {dispatch, showCompleted, searchText} = this.props;
 
     return (
@@ -27,8 +26,8 @@ export var TodoSearch = React.createClass({
         </div>
       </div>
     );
-  }   // render
-});
+  }         // render
+};          // TodoSearch
 
 export default connect(
   (state) => {
